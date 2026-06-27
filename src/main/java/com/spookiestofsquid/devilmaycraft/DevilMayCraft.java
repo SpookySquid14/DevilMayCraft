@@ -1,6 +1,7 @@
 package com.spookiestofsquid.devilmaycraft;
 
 import com.mojang.logging.LogUtils;
+import com.spookiestofsquid.devilmaycraft.item.ModCreativeModTabs;
 import com.spookiestofsquid.devilmaycraft.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,6 +29,8 @@ public class DevilMayCraft
     {
         IEventBus modEventBus = context.getModEventBus();
 
+        ModCreativeModTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
 
         // Register the commonSetup method for modloading
@@ -47,9 +50,6 @@ public class DevilMayCraft
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event)
     {
-        if(event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.RED_ORB);
-        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
